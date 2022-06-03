@@ -1,6 +1,6 @@
 import { existsSync, readFile } from 'fs';
 import { resolve } from 'path';
-import { FILES_FOLDER } from './constants.js';
+import { FILES_FOLDER } from '../constants.js';
 import { getDirname, throwError } from './utils.js';
 
 const FILE_TO_READ = 'fileToRead.txt';

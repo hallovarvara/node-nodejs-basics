@@ -1,7 +1,7 @@
 import { existsSync, rename as renameFile } from 'fs';
 import { resolve } from 'path';
 import { getDirname, throwError } from './utils.js';
-import { FILES_FOLDER } from './constants.js';
+import { FILES_FOLDER } from '../constants.js';
 
 const FILE_TO_RENAME = 'wrongFilename.txt';
 const NEW_FILE_NAME = 'properFilename.md';

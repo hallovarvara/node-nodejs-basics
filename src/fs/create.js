@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { writeFile, existsSync } from 'fs';
-import { FILES_FOLDER } from './constants.js';
+import { FILES_FOLDER } from '../constants.js';
 import { getDirname, throwError } from './utils.js';
 
 const FILENAME = 'fresh.txt';

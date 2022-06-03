@@ -8,7 +8,7 @@ import {
 
 import { resolve, join } from 'path';
 import { getDirname, throwError } from './utils.js';
-import { FILES_FOLDER } from './constants.js';
+import { FILES_FOLDER } from '../constants.js';
 
 const FILES_FOLDER_COPY_NAME = 'files_copy';
 

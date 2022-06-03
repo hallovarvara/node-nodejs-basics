@@ -1,7 +1,7 @@
 import { existsSync, unlink } from 'fs';
 import { resolve } from 'path';
 import { getDirname, throwError } from './utils.js';
-import { FILES_FOLDER } from './constants.js';
+import { FILES_FOLDER } from '../constants.js';
 
 const __dirname = getDirname();
 

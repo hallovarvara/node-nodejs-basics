@@ -4,6 +4,7 @@ import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import { fileURLToPath } from 'url';
 import sayHello from './files/c.js';
+import { FILES_FOLDER } from '../constants.js';
 
 sayHello();
 
@@ -14,7 +15,7 @@ const __dirname = dirname(__filename);
 
 const unknownObjectPath = path.resolve(
     __dirname,
-    'files',
+    FILES_FOLDER,
     `${random > 0.5 ? 'a' : 'b'}.json`,
 );
 
