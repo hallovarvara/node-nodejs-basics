@@ -1,12 +1,10 @@
 import { existsSync, readdir } from 'fs';
-import { resolve } from 'path';
-import { getDirname, throwError } from './utils.js';
+import { throwError } from '../utils/throw-error.js';
 import { FILES_FOLDER } from '../constants.js';
-
-const __dirname = getDirname();
+import { getSourcePath } from '../utils/get-source-path.js';
 
 export const list = async () => {
-    const filesFolderPath = resolve(__dirname, FILES_FOLDER);
+    const filesFolderPath = getSourcePath({ url: import.meta.url });
     const isFolderExist = existsSync(filesFolderPath);
 
     if (!isFolderExist) {

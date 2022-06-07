@@ -1,20 +1,16 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { FILES_FOLDER } from '../constants.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { getSourcePath } from '../utils/get-source-path.js';
 
 export const FILENAME_DECOMPRESSED = 'fileToCompress.txt';
 export const FILENAME_COMPRESSED = 'archive.gz';
 
-export const FILE_DECOMPRESSED = resolve(
-    __dirname,
-    FILES_FOLDER,
-    FILENAME_DECOMPRESSED,
-);
+const { url } = import.meta;
 
-export const FILE_COMPRESSED = resolve(
-    __dirname,
-    FILES_FOLDER,
-    FILENAME_COMPRESSED,
-);
+export const FILE_DECOMPRESSED = getSourcePath({
+    url,
+    fileName: FILENAME_DECOMPRESSED,
+});
+
+export const FILE_COMPRESSED = getSourcePath({
+    url,
+    fileName: FILENAME_COMPRESSED,
+});

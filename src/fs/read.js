@@ -1,14 +1,15 @@
 import { existsSync, readFile } from 'fs';
-import { resolve } from 'path';
-import { FILES_FOLDER } from '../constants.js';
-import { getDirname, throwError } from './utils.js';
+import { throwError } from '../utils/throw-error.js';
+import { getSourcePath } from '../utils/get-source-path.js';
 
 const FILE_TO_READ = 'fileToRead.txt';
 
-const __dirname = getDirname();
-
 export const read = async () => {
-    const filePath = resolve(__dirname, FILES_FOLDER, FILE_TO_READ);
+    const filePath = getSourcePath({
+        url: import.meta.url,
+        fileName: FILE_TO_READ,
+    });
+
     const isFileExist = existsSync(filePath);
 
     if (!isFileExist) {

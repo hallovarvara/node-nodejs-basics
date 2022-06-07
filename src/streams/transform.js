@@ -1,7 +1,5 @@
 import { Transform, pipeline } from 'stream';
-import { ERROR_FS_OPERATION_FAILED } from '../constants.js';
-
-const STOP_PHRASE = '/stop';
+import { ERROR_FS_OPERATION_FAILED, STOP_PHRASE } from '../constants.js';
 
 const reverseString = (str) => {
     const isNotReversible = typeof str !== 'string' || str.length < 2;

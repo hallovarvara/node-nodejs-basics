@@ -1,13 +1,17 @@
-import { resolve } from 'path';
 import { writeFile, existsSync } from 'fs';
 import { FILES_FOLDER } from '../constants.js';
-import { getDirname, throwError } from './utils.js';
+import { throwError } from '../utils/throw-error.js';
+import { getSourcePath } from '../utils/get-source-path.js';
 
 const FILENAME = 'fresh.txt';
 const FILE_CONTENT = 'I am fresh and young';
 
 export const create = async () => {
-    const filePath = resolve(getDirname(), FILES_FOLDER, FILENAME);
+    const filePath = getSourcePath({
+        url: import.meta.url,
+        fileName: FILENAME,
+    });
+
     const isFileExist = existsSync(filePath);
 
     if (isFileExist) {

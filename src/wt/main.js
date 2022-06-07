@@ -1,10 +1,13 @@
 import { cpus } from 'os';
 import { Worker } from 'worker_threads';
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { getSourcePath } from '../utils/get-source-path.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const WORKER_PATH = resolve(__dirname, 'worker.js');
+const WORKER_PATH = getSourcePath({
+    url: import.meta.url,
+    folderName: '',
+    fileName: 'worker.js',
+});
+
 const coresNumber = [...Array(cpus().length)].map((useless, i) => i + 10);
 
 export const performCalculations = async () => {

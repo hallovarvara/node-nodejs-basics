@@ -6,13 +6,12 @@ import {
     lstatSync,
 } from 'fs';
 
-import { resolve, join } from 'path';
-import { getDirname, throwError } from './utils.js';
+import { join } from 'path';
+import { throwError } from '../utils/throw-error.js';
 import { FILES_FOLDER } from '../constants.js';
+import { getSourcePath } from '../utils/get-source-path.js';
 
-const FILES_FOLDER_COPY_NAME = 'files_copy';
-
-const __dirname = getDirname();
+const COPY_FOLDER = 'files_copy';
 
 const copyRecursiveSync = function (src, dest) {
     const isSourceExist = existsSync(src);
@@ -40,13 +39,15 @@ const copyRecursiveSync = function (src, dest) {
 };
 
 export const copy = async () => {
-    const sourceFolder = resolve(__dirname, FILES_FOLDER);
-    const destinationFolder = resolve(__dirname, FILES_FOLDER_COPY_NAME);
+    const url = import.meta.url;
+
+    const sourceFolder = getSourcePath({ url });
+    const destinationFolder = getSourcePath({ url, folderName: COPY_FOLDER });
 
     copyRecursiveSync(sourceFolder, destinationFolder);
 
     console.log(
-        `Folder "${FILES_FOLDER}" and it's content were successfully copied to "${FILES_FOLDER_COPY_NAME}" folder`,
+        `Folder "${FILES_FOLDER}" and it's content were successfully copied to "${COPY_FOLDER}" folder`,
     );
 };
 

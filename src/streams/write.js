@@ -1,15 +1,14 @@
 import { createWriteStream } from 'fs';
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { FILES_FOLDER } from '../constants.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { FILES_FOLDER, STOP_PHRASE } from '../constants.js';
+import { getSourcePath } from '../utils/get-source-path.js';
 
 const FILE_TO_WRITE = 'fileToWrite.txt';
-const STOP_PHRASE = '/stop';
 
 export const write = async () => {
-    const filePath = resolve(__dirname, FILES_FOLDER, FILE_TO_WRITE);
+    const filePath = getSourcePath({
+        url: import.meta.url,
+        fileName: FILE_TO_WRITE,
+    });
 
     const writeStream = createWriteStream(filePath, 'utf8');
 
