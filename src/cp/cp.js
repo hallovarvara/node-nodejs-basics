@@ -3,18 +3,17 @@ import { getSourcePath } from '../utils/get-source-path.js';
 
 const FILE_TO_OPERATE = 'script.js';
 
-const filePath = getSourcePath({
-    url: import.meta.url,
-    fileName: FILE_TO_OPERATE,
-});
+const args = process.argv.slice(2);
 
 export const spawnChildProcess = async (args) => {
-    fork(filePath, args);
+    const filePath = getSourcePath({
+        url: import.meta.url,
+        fileName: FILE_TO_OPERATE,
+    });
+
+    fork(filePath, [...args], {
+        stdio: [process.stdin, process.stdout, process.stderr, 'ipc'],
+    });
 };
 
-spawnChildProcess([
-    'hello',
-    'some new argument',
-    'previous was fine',
-    'add more',
-]);
+spawnChildProcess(args);
