@@ -13,7 +13,8 @@
 | `npm run fs:delete`        | Removes in `fs/files` folder file `fileToRemove.txt`                                                                                                                        |
 | `npm run fs:list`          | Shows in console list of entities in `fs/files`                                                                                                                             |
 | `npm run fs:read`          | Shows in console content of `fs/files/fileToRead.txt` file                                                                                                                  |
-| `npm run cli:args`         | Shows in console script args values in format `$key` is `$value`                                                                                                            |
+| `npm run cli:args`         | Shows in console script args values in format `$key`=`$value`; `$key`=`$value`                                                                                              |
+| `npm run cli:env`          | Shows in console command args values with RSS_ prefix in format `$key` is `$value`                                                                                          |
 | `npm run modules:cjsToEsm` | Shows in console results of running refactored `modules/cjsToEsm.cjs` file (new name is `esm.mjs`)                                                                          |
 | `npm run hash:calcHash`    | Shows in console hash of `hash/files/fileToCalculateHashFor.txt` file                                                                                                       |
 | `npm run stream:read`      | Shows in console content of `streams/files/fileToRead.txt` file (read by stream)                                                                                            |
