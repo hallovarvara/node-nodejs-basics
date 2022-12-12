@@ -8,7 +8,7 @@ const reverseString = (str) => {
 
 export const transform = async () => {
     const readable = process.stdin;
-    const writable = process.stdin;
+    const writable = process.stdout;
 
     process.stdout.write(`
 Welcome to reverser bot!
